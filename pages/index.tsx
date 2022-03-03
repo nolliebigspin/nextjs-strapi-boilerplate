@@ -1,8 +1,14 @@
 import type { NextPage } from "next";
-import Layout from "../components/layout/Layout";
+import { Center, Square, Circle, Box, Flex } from "@chakra-ui/react";
 
 const Home: NextPage = () => {
-  return <div></div>;
+  return (
+    <Center>
+      <Box as="span" fontWeight="bold" fontSize="lg" bg="tomato" p="100" mt="100">
+        IN PROGRESS!
+      </Box>
+    </Center>
+  );
 };
 
 export default Home;

@@ -4,7 +4,7 @@ const Layout = (props: any) => {
   return (
     <div>
       <Head>
-        <title>alec.digital</title>
+        <title>nolliebigspin.com</title>
         <meta name="description" content="Personal blog created with NextJS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
