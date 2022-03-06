@@ -2,8 +2,7 @@ import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
 import Layout from "../components/layout/Layout";
-import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { colors } from "../theme/colors";
 
 type NextPageWithLayout = NextPage & {
