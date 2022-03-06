@@ -1,0 +1,11 @@
+overwrite: true
+schema: "http://localhost:1337/graphql"
+documents: "./src/lib/graphql/**/*.graphql"
+generates:
+  ./src/lib/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - add:
+          content: ["/* eslint no-use-before-define: 0 */", "/* eslint @typescript-eslint/ban-types: 0 */"]

@@ -1,0 +1,10 @@
+query GetPosts {
+  posts {
+    data {
+      attributes {
+        title
+        content
+      }
+    }
+  }
+}
