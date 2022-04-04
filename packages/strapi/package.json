@@ -14,7 +14,8 @@
     "@strapi/plugin-i18n": "^4.1.7",
     "@strapi/plugin-users-permissions": "^4.1.7",
     "@strapi/strapi": "^4.1.7",
-    "mysql": "2.18.1"
+    "mysql": "2.18.1",
+    "sharp": "^0.30.3"
   },
   "author": {
     "name": "Alec Winter <alec.winter@monday-consulting.com>"
