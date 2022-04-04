@@ -1,4 +1,4 @@
-query GetPosts {
+query Posts {
   posts {
     data {
       attributes {
