@@ -20,7 +20,8 @@
     "lint": "yarn workspace frontend lint",
     "format": "yarn workspace frontend format",
     "backup-db": "sh ./scripts/backup-database.sh",
-    "restore-db": "sh ./scripts/restore-databese.sh"
+    "restore-db": "sh ./scripts/restore-databese.sh",
+    "prepare": "husky install"
   },
   "resolutions": {
     "resolve": "<1.21.0",
