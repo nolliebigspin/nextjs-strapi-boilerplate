@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx}\"",
-    "codegen": "graphql-codegen --config codegen.yml",
-    "check-ts": "tsc --noEmit"
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.5.7",
