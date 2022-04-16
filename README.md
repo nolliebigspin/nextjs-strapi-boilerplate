@@ -16,7 +16,8 @@
 
 ## Useful commands
 
-* `yarn dev` - Starts frontend and backend dev envronment (to start only one environment, use `dev:strapi` or `dev:frontend`)
+* `yarn dev` - Starts frontend and backend dev envronment
+  * `yarn dev:frontend` or `yarn dev:strapi` - Starts frontend or backend seperately
 * `yarn backup-db` - Backups a snapshot of the mysql database
 * `yarn restore-db` - Restores database from backup file
 * `yarn format` - Formats your NextJS code with prettier
