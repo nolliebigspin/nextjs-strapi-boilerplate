@@ -8,8 +8,20 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "yarn workspaces run dev",
+    "dev:frontend": "yarn workspace frontend dev",
+    "dev:strapi": "yarn workspace strapi dev",
+    "build": "yarn workspaces run build",
+    "build:frontend": "yarn workspace frontend build",
+    "build:strapi": "yarn workspace strapi build",
+    "start": "yarn workspaces run start",
+    "start:frontend": "yarn workspace frontend start",
+    "start:strapi": "yarn workspaces strapi start",
+    "lint": "yarn workspace frontend lint",
+    "format": "yarn workspace frontend format",
     "backup-db": "sh ./scripts/backup-database.sh",
-    "restore-db": "sh ./scripts/restore-databese.sh"
+    "restore-db": "sh ./scripts/restore-databese.sh",
+    "prepare": "husky install"
   },
   "resolutions": {
     "resolve": "<1.21.0",
