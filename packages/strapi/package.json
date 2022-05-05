@@ -10,14 +10,14 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.1.8",
-    "@strapi/plugin-i18n": "^4.1.8",
-    "@strapi/plugin-users-permissions": "^4.1.8",
-    "@strapi/strapi": "^4.1.8",
+    "@strapi/plugin-graphql": "^4.1.9",
+    "@strapi/plugin-i18n": "^4.1.9",
+    "@strapi/plugin-users-permissions": "^4.1.9",
+    "@strapi/strapi": "^4.1.9",
     "mysql": "2.18.1"
   },
   "author": {
-    "name": "Alec Winter <alec.winter@monday-consulting.com>"
+    "name": "Alec Winter <alec96.w@gmail.com>"
   },
   "strapi": {
     "uuid": "7ceea466-7b18-40a5-affe-ed79dc1706d9"
