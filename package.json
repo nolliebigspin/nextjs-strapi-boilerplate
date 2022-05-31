@@ -17,11 +17,11 @@
     "start": "yarn workspaces run start",
     "start:frontend": "yarn workspace frontend start",
     "start:strapi": "yarn workspaces strapi start",
-    "lint": "yarn workspace frontend lint",
     "format": "yarn workspace frontend format",
+    "check-ts": "yarn workspace frontend tsc --noEmit",
+    "lint": "yarn workspace frontend lint",
     "backup-db": "sh ./scripts/backup-database.sh",
-    "restore-db": "sh ./scripts/restore-databese.sh",
-    "prepare": "husky install"
+    "restore-db": "sh ./scripts/restore-databese.sh"
   },
   "resolutions": {
     "resolve": "<1.21.0",
