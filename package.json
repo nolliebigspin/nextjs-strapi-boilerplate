@@ -21,7 +21,8 @@
     "check-ts": "yarn workspace frontend tsc --noEmit",
     "lint": "yarn workspace frontend lint",
     "backup-db": "sh ./scripts/backup-database.sh",
-    "restore-db": "sh ./scripts/restore-databese.sh"
+    "restore-db": "sh ./scripts/restore-databese.sh",
+    "prepare": "husky install"
   },
   "hooks": {
     "pre-commit": "yarn format && yarn check-ts && yarn lint"
