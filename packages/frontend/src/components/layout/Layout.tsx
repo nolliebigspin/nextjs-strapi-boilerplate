@@ -4,8 +4,8 @@ const Layout = (props: any) => {
   return (
     <div>
       <Head>
-        <title>nolliebigspin.com</title>
-        <meta name="description" content="Personal blog created with NextJS" />
+        <title>Strapi + NextJS boilerplate</title>
+        <meta name="description" content="Personal blog created with NextJS and Strapi" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>{props.children}</main>

@@ -23,6 +23,9 @@
     "backup-db": "sh ./scripts/backup-database.sh",
     "restore-db": "sh ./scripts/restore-databese.sh"
   },
+  "hooks": {
+    "pre-commit": "yarn format && yarn check-ts && yarn lint"
+  },
   "resolutions": {
     "resolve": "<1.21.0",
     "graphql": "^15.5.1"
