@@ -1,7 +1,6 @@
 import type { NextPage, NextPageContext } from "next";
 import client from "../lib/apolloClient";
-import { PostEntity, PostsQuery } from "../lib/generated/graphql";
-import { GET_POSTS } from "../lib/queries/posts";
+import { PostEntity, PostsDocument, PostsQuery } from "../lib/graphql";
 
 export type HomeProps = {
   posts: PostEntity[];
@@ -9,7 +8,7 @@ export type HomeProps = {
 
 export const getStaticProps = async (context: NextPageContext) => {
   const { data, error } = await client.query<PostsQuery>({
-    query: GET_POSTS,
+    query: PostsDocument,
     variables: {
       locale: context.locale,
     },

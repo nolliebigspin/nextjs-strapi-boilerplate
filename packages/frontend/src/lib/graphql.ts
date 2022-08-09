@@ -1,6 +1,5 @@
 /* eslint no-use-before-define: 0 */
 /* eslint @typescript-eslint/ban-types: 0 */
-/* eslint @typescript-eslint/no-explicit-any: 0 */
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
 export type Maybe<T> = T | null;
@@ -16,11 +15,9 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  I18NLocaleCode: any;
   JSON: any;
-  /** The `Upload` scalar type represents a file upload. */
   Upload: any;
 };
 
@@ -31,6 +28,7 @@ export type BooleanFilterInput = {
   containsi?: InputMaybe<Scalars["Boolean"]>;
   endsWith?: InputMaybe<Scalars["Boolean"]>;
   eq?: InputMaybe<Scalars["Boolean"]>;
+  eqi?: InputMaybe<Scalars["Boolean"]>;
   gt?: InputMaybe<Scalars["Boolean"]>;
   gte?: InputMaybe<Scalars["Boolean"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["Boolean"]>>>;
@@ -54,6 +52,7 @@ export type DateTimeFilterInput = {
   containsi?: InputMaybe<Scalars["DateTime"]>;
   endsWith?: InputMaybe<Scalars["DateTime"]>;
   eq?: InputMaybe<Scalars["DateTime"]>;
+  eqi?: InputMaybe<Scalars["DateTime"]>;
   gt?: InputMaybe<Scalars["DateTime"]>;
   gte?: InputMaybe<Scalars["DateTime"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -83,6 +82,7 @@ export type FloatFilterInput = {
   containsi?: InputMaybe<Scalars["Float"]>;
   endsWith?: InputMaybe<Scalars["Float"]>;
   eq?: InputMaybe<Scalars["Float"]>;
+  eqi?: InputMaybe<Scalars["Float"]>;
   gt?: InputMaybe<Scalars["Float"]>;
   gte?: InputMaybe<Scalars["Float"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
@@ -103,6 +103,7 @@ export type GenericMorph =
   | I18NLocale
   | Post
   | UploadFile
+  | UploadFolder
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser;
@@ -150,6 +151,7 @@ export type IdFilterInput = {
   containsi?: InputMaybe<Scalars["ID"]>;
   endsWith?: InputMaybe<Scalars["ID"]>;
   eq?: InputMaybe<Scalars["ID"]>;
+  eqi?: InputMaybe<Scalars["ID"]>;
   gt?: InputMaybe<Scalars["ID"]>;
   gte?: InputMaybe<Scalars["ID"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
@@ -173,6 +175,7 @@ export type IntFilterInput = {
   containsi?: InputMaybe<Scalars["Int"]>;
   endsWith?: InputMaybe<Scalars["Int"]>;
   eq?: InputMaybe<Scalars["Int"]>;
+  eqi?: InputMaybe<Scalars["Int"]>;
   gt?: InputMaybe<Scalars["Int"]>;
   gte?: InputMaybe<Scalars["Int"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -196,6 +199,7 @@ export type JsonFilterInput = {
   containsi?: InputMaybe<Scalars["JSON"]>;
   endsWith?: InputMaybe<Scalars["JSON"]>;
   eq?: InputMaybe<Scalars["JSON"]>;
+  eqi?: InputMaybe<Scalars["JSON"]>;
   gt?: InputMaybe<Scalars["JSON"]>;
   gte?: InputMaybe<Scalars["JSON"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["JSON"]>>>;
@@ -215,16 +219,19 @@ export type JsonFilterInput = {
 export type Mutation = {
   __typename?: "Mutation";
   createPost?: Maybe<PostEntityResponse>;
+  createPostLocalization?: Maybe<PostEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
+  createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deletePost?: Maybe<PostEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
+  deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
-  /** Update an existing user */
+  /** Delete an existing user */
   deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   /** Confirm an email users email address */
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
@@ -240,6 +247,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updatePost?: Maybe<PostEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
+  updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
   /** Update an existing user */
@@ -249,10 +257,21 @@ export type Mutation = {
 
 export type MutationCreatePostArgs = {
   data: PostInput;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+};
+
+export type MutationCreatePostLocalizationArgs = {
+  data?: InputMaybe<PostInput>;
+  id?: InputMaybe<Scalars["ID"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
 
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
+};
+
+export type MutationCreateUploadFolderArgs = {
+  data: UploadFolderInput;
 };
 
 export type MutationCreateUsersPermissionsRoleArgs = {
@@ -265,9 +284,14 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 export type MutationDeletePostArgs = {
   id: Scalars["ID"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
 
 export type MutationDeleteUploadFileArgs = {
+  id: Scalars["ID"];
+};
+
+export type MutationDeleteUploadFolderArgs = {
   id: Scalars["ID"];
 };
 
@@ -320,10 +344,16 @@ export type MutationUpdateFileInfoArgs = {
 export type MutationUpdatePostArgs = {
   data: PostInput;
   id: Scalars["ID"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
 
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
+  id: Scalars["ID"];
+};
+
+export type MutationUpdateUploadFolderArgs = {
+  data: UploadFolderInput;
   id: Scalars["ID"];
 };
 
@@ -364,9 +394,18 @@ export type Post = {
   __typename?: "Post";
   content: Scalars["String"];
   createdAt?: Maybe<Scalars["DateTime"]>;
+  locale?: Maybe<Scalars["String"]>;
+  localizations?: Maybe<PostRelationResponseCollection>;
   publishedAt?: Maybe<Scalars["DateTime"]>;
   title: Scalars["String"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
+};
+
+export type PostLocalizationsArgs = {
+  filters?: InputMaybe<PostFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 };
 
 export type PostEntity = {
@@ -391,6 +430,8 @@ export type PostFiltersInput = {
   content?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<PostFiltersInput>;
   not?: InputMaybe<PostFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
@@ -402,6 +443,11 @@ export type PostInput = {
   content?: InputMaybe<Scalars["String"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   title?: InputMaybe<Scalars["String"]>;
+};
+
+export type PostRelationResponseCollection = {
+  __typename?: "PostRelationResponseCollection";
+  data: Array<PostEntity>;
 };
 
 export enum PublicationState {
@@ -418,6 +464,8 @@ export type Query = {
   posts?: Maybe<PostEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
+  uploadFolder?: Maybe<UploadFolderEntityResponse>;
+  uploadFolders?: Maybe<UploadFolderEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
@@ -436,10 +484,12 @@ export type QueryI18NLocalesArgs = {
 
 export type QueryPostArgs = {
   id?: InputMaybe<Scalars["ID"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
 
 export type QueryPostsArgs = {
   filters?: InputMaybe<PostFiltersInput>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
@@ -451,6 +501,16 @@ export type QueryUploadFileArgs = {
 
 export type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type QueryUploadFolderArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
+export type QueryUploadFoldersArgs = {
+  filters?: InputMaybe<UploadFolderFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 };
@@ -487,6 +547,7 @@ export type StringFilterInput = {
   containsi?: InputMaybe<Scalars["String"]>;
   endsWith?: InputMaybe<Scalars["String"]>;
   eq?: InputMaybe<Scalars["String"]>;
+  eqi?: InputMaybe<Scalars["String"]>;
   gt?: InputMaybe<Scalars["String"]>;
   gte?: InputMaybe<Scalars["String"]>;
   in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
@@ -547,6 +608,8 @@ export type UploadFileFiltersInput = {
   caption?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   ext?: InputMaybe<StringFilterInput>;
+  folder?: InputMaybe<UploadFolderFiltersInput>;
+  folderPath?: InputMaybe<StringFilterInput>;
   formats?: InputMaybe<JsonFilterInput>;
   hash?: InputMaybe<StringFilterInput>;
   height?: InputMaybe<IntFilterInput>;
@@ -568,6 +631,8 @@ export type UploadFileInput = {
   alternativeText?: InputMaybe<Scalars["String"]>;
   caption?: InputMaybe<Scalars["String"]>;
   ext?: InputMaybe<Scalars["String"]>;
+  folder?: InputMaybe<Scalars["ID"]>;
+  folderPath?: InputMaybe<Scalars["String"]>;
   formats?: InputMaybe<Scalars["JSON"]>;
   hash?: InputMaybe<Scalars["String"]>;
   height?: InputMaybe<Scalars["Int"]>;
@@ -579,6 +644,81 @@ export type UploadFileInput = {
   size?: InputMaybe<Scalars["Float"]>;
   url?: InputMaybe<Scalars["String"]>;
   width?: InputMaybe<Scalars["Int"]>;
+};
+
+export type UploadFileRelationResponseCollection = {
+  __typename?: "UploadFileRelationResponseCollection";
+  data: Array<UploadFileEntity>;
+};
+
+export type UploadFolder = {
+  __typename?: "UploadFolder";
+  children?: Maybe<UploadFolderRelationResponseCollection>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  files?: Maybe<UploadFileRelationResponseCollection>;
+  name: Scalars["String"];
+  parent?: Maybe<UploadFolderEntityResponse>;
+  path: Scalars["String"];
+  pathId: Scalars["Int"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+};
+
+export type UploadFolderChildrenArgs = {
+  filters?: InputMaybe<UploadFolderFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type UploadFolderFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type UploadFolderEntity = {
+  __typename?: "UploadFolderEntity";
+  attributes?: Maybe<UploadFolder>;
+  id?: Maybe<Scalars["ID"]>;
+};
+
+export type UploadFolderEntityResponse = {
+  __typename?: "UploadFolderEntityResponse";
+  data?: Maybe<UploadFolderEntity>;
+};
+
+export type UploadFolderEntityResponseCollection = {
+  __typename?: "UploadFolderEntityResponseCollection";
+  data: Array<UploadFolderEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type UploadFolderFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
+  children?: InputMaybe<UploadFolderFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  files?: InputMaybe<UploadFileFiltersInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<UploadFolderFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
+  parent?: InputMaybe<UploadFolderFiltersInput>;
+  path?: InputMaybe<StringFilterInput>;
+  pathId?: InputMaybe<IntFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type UploadFolderInput = {
+  children?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  files?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  name?: InputMaybe<Scalars["String"]>;
+  parent?: InputMaybe<Scalars["ID"]>;
+  path?: InputMaybe<Scalars["String"]>;
+  pathId?: InputMaybe<Scalars["Int"]>;
+};
+
+export type UploadFolderRelationResponseCollection = {
+  __typename?: "UploadFolderRelationResponseCollection";
+  data: Array<UploadFolderEntity>;
 };
 
 export type UsersPermissionsCreateRolePayload = {
@@ -793,19 +933,6 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type PostsQueryVariables = Exact<{ [key: string]: never }>;
-
-export type PostsQuery = {
-  __typename?: "Query";
-  posts?: {
-    __typename?: "PostEntityResponseCollection";
-    data: Array<{
-      __typename?: "PostEntity";
-      attributes?: { __typename?: "Post"; title: string; content: string } | null;
-    }>;
-  } | null;
-};
-
 export const PostsDocument = gql`
   query Posts {
     posts {
@@ -849,3 +976,15 @@ export function usePostsLazyQuery(
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
 export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;
+export type PostsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type PostsQuery = {
+  __typename?: "Query";
+  posts?: {
+    __typename?: "PostEntityResponseCollection";
+    data: Array<{
+      __typename?: "PostEntity";
+      attributes?: { __typename?: "Post"; title: string; content: string } | null;
+    }>;
+  } | null;
+};
