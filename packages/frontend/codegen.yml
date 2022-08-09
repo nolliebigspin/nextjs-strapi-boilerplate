@@ -1,11 +1,18 @@
 overwrite: true
 schema: "http://localhost:1337/graphql"
-documents: "./src/lib/graphql/**/*.graphql"
+documents: "./src/lib/queries/**/*.graphql"
 generates:
-  ./src/lib/generated/graphql.tsx:
+  src/lib/graphql.ts:
     plugins:
       - "typescript"
-      - "typescript-operations"
       - "typescript-react-apollo"
+      - "typescript-operations"
       - add:
-          content: ["/* eslint no-use-before-define: 0 */", "/* eslint @typescript-eslint/ban-types: 0 */", "/* eslint @typescript-eslint/no-explicit-any: 0 */"]
+          content:
+            [
+              "/* eslint no-use-before-define: 0 */",
+              "/* eslint @typescript-eslint/ban-types: 0 */",
+            ]
+    hooks:
+      afterOneFileWrite:
+        - prettier ./src/lib/graphql.ts --write

@@ -10,20 +10,20 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.3.0",
-    "@strapi/plugin-i18n": "^4.3.0",
-    "@strapi/plugin-users-permissions": "^4.3.0",
-    "@strapi/strapi": "^4.3.0",
-    "mysql": "2.18.1"
+    "@strapi/plugin-graphql": "^4.3.2",
+    "@strapi/plugin-i18n": "4.3.2",
+    "@strapi/plugin-users-permissions": "4.3.2",
+    "@strapi/strapi": "4.3.2",
+    "better-sqlite3": "7.4.6"
   },
   "author": {
-    "name": "Alec Winter <alec96.w@gmail.com>"
+    "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "7ceea466-7b18-40a5-affe-ed79dc1706d9"
+    "uuid": "d7a4f874-142d-4aba-b528-07338bd8012f"
   },
   "engines": {
-    "node": ">=14.x.x <=16.x.x",
+    "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

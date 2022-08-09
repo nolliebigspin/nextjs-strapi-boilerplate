@@ -1,10 +1,22 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, DefaultOptions, InMemoryCache } from "@apollo/client";
 
-export const strapiHost = "http://localhost:1337";
+export const strapiHost = `${process.env.STRAPI_HOST || "http://localhost:1337"}`;
+
+const defaultOptions: DefaultOptions = {
+  watchQuery: {
+    fetchPolicy: "no-cache",
+    errorPolicy: "ignore",
+  },
+  query: {
+    fetchPolicy: "no-cache",
+    errorPolicy: "all",
+  },
+};
 
 const client = new ApolloClient({
   uri: `${strapiHost}/graphql`,
   cache: new InMemoryCache(),
+  defaultOptions: defaultOptions,
 });
 
 export default client;
