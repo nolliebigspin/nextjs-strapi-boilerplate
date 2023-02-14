@@ -1,41 +1,25 @@
 {
   "name": "nextjs-strapi-boilerplate",
-  "version": "1.0.0",
-  "author": "Alec Winter <alec96.w@gmail.com>",
-  "license": "UNLICENSED",
+  "version": "0.0.0",
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspaces run dev",
-    "dev:frontend": "yarn workspace frontend dev",
-    "dev:strapi": "yarn workspace strapi dev",
-    "build": "yarn workspaces run build",
-    "build:frontend": "yarn workspace frontend build",
-    "build:strapi": "yarn workspace strapi build",
-    "start": "yarn workspaces run start",
-    "start:frontend": "yarn workspace frontend start",
-    "start:strapi": "yarn workspaces strapi start",
-    "format": "yarn workspace frontend format",
-    "check-ts": "yarn workspace frontend tsc --noEmit",
-    "lint": "yarn workspace frontend lint",
-    "backup-db": "sh ./scripts/backup-database.sh",
-    "restore-db": "sh ./scripts/restore-databese.sh",
-    "prepare": "husky install"
-  },
-  "hooks": {
-    "pre-commit": "yarn format && yarn check-ts && yarn lint"
-  },
-  "resolutions": {
-    "resolve": "<1.21.0",
-    "graphql": "^15.5.1"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "husky": "^8.0.1"
+    "eslint-config-custom": "*",
+    "prettier": "latest",
+    "turbo": "latest"
   },
   "engines": {
-    "node": ">=14.x.x <=16.x.x",
-    "npm": ">=6.0.0"
-  }
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.18"
 }
