@@ -1,0 +1,21 @@
+overwrite: true
+schema: "http://127.0.0.1:1337/graphql"
+documents: "./src/lib/**/*.graphql"
+generates:
+  src/lib/generatedTypes.ts:
+    plugins:
+      - "typescript"
+      - "typescript-react-apollo"
+      - "typescript-operations"
+      - add:
+          content:
+            [
+              "/* eslint no-use-before-define: 0 */",
+              "/* eslint @typescript-eslint/ban-types: 0 */",
+            ]
+    config:
+      useIndexSignature: true
+      maybeValue: "T"
+    hooks:
+      afterOneFileWrite:
+        - prettier ./src/lib/generatedTypes.ts --write
