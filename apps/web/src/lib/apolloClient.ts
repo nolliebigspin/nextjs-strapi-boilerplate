@@ -1,7 +1,7 @@
 import { ApolloClient, DefaultOptions, InMemoryCache } from "@apollo/client";
 
 export const strapiHost = `${
-  `${process.env.STRAPI_HOST}` || "http://localhost:1337"
+  `${process.env.STRAPI_HOST}` || "http://127.0.0.1:1337"
 }`;
 
 const defaultOptions: DefaultOptions = {

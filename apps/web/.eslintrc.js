@@ -4,7 +4,7 @@ module.exports = {
     "next/core-web-vitals",
     "prettier",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
   ],
   rules: {
     "@typescript-eslint/ban-ts-comment": "warn",
@@ -16,8 +16,8 @@ module.exports = {
       {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight"],
-        aspects: ["invalidHref", "preferButton"]
-      }
-    ]
-  }
-}
+        aspects: ["invalidHref", "preferButton"],
+      },
+    ],
+  },
+};
