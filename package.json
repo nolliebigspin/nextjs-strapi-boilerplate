@@ -17,6 +17,10 @@
     "prettier": "latest",
     "turbo": "latest"
   },
+  "resolutions": {
+    "resolve": "<1.21.0",
+    "graphql": "^15.5.1"
+  },
   "engines": {
     "node": ">=14.0.0"
   },

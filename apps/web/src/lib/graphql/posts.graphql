@@ -1,0 +1,10 @@
+query AllPosts {
+  posts {
+    data {
+      attributes {
+        title
+        description
+      }
+    }
+  }
+}
