@@ -2,6 +2,13 @@
   "name": "nextjs-strapi-boilerplate",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "yarn": "1.22.19"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -16,14 +23,10 @@
     "dotenv-cli": "^7.0.0",
     "eslint-config-custom": "*",
     "prettier": "latest",
-    "turbo": "^1.8.2"
+    "turbo": "^1.10.2"
   },
   "resolutions": {
     "resolve": "<1.21.0",
     "graphql": "^15.5.1"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "yarn@1.22.18"
+  }
 }
